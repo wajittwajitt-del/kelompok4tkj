@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    }
+    
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease;
+    }
+    
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+    
+    .contact-button {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full">
+  <div class="w-full min-h-full"><!-- Hero Section -->
+   <section class="hero-gradient w-full py-32 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+     <div class="text-6xl mb-6 pulse-animation">
+      ✨
+     </div>
+     <h1 id="hero-title" class="text-5xl font-bold mb-4 text-gray-800">Portfolio Kreatif</h1>
+     <p id="hero-subtitle" class="text-2xl text-gray-700">Transformasi Ide Menjadi Karya Digital</p>
+    </div>
+   </section><!-- About Section -->
+   <section class="w-full py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 id="about-title" class="text-4xl font-bold mb-6 text-gray-800">Tentang Kami</h2>
+     <p id="about-text" class="text-xl text-gray-600 leading-relaxed">Kami adalah tim profesional yang berdedikasi untuk menciptakan pengalaman digital yang luar biasa. Dengan passion dan keahlian, kami menghadirkan solusi kreatif untuk setiap proyek.</p>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section class="w-full py-20 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+     <h2 id="portfolio-title" class="text-4xl font-bold mb-12 text-center text-gray-800">Karya Kami</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8"><!-- Project 1 -->
+      <article class="project-card rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-purple-400 to-pink-500" style="height: 300px;">
+       <div class="project-overlay">
+        <h3 id="project-1-title" class="text-white text-2xl font-bold px-6">Desain Mobile App</h3>
+       </div>
+      </article><!-- Project 2 -->
+      <article class="project-card rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-400 to-cyan-500" style="height: 300px;">
+       <div class="project-overlay">
+        <h3 id="project-2-title" class="text-white text-2xl font-bold px-6">Website E-Commerce</h3>
+       </div>
+      </article><!-- Project 3 -->
+      <article class="project-card rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-orange-400 to-red-500" style="height: 300px;">
+       <div class="project-overlay">
+        <h3 id="project-3-title" class="text-white text-2xl font-bold px-6">Branding Identity</h3>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section class="w-full py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 id="contact-title" class="text-4xl font-bold mb-8 text-gray-800">Mari Berkolaborasi</h2><button id="contact-button" class="contact-button px-10 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-lg"> Hubungi Kami </button>
+     <div id="contact-message" class="mt-6 text-green-600 font-semibold opacity-0 transition-opacity duration-300"></div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full bg-gray-900 text-white py-12 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+     <p class="text-gray-400">© 2024 Creative Portfolio. Dibuat dengan ❤️</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#84fab0",
+      surface_color: "#ffffff",
+      text_color: "#1f2937",
+      primary_action_color: "#a855f7",
+      secondary_action_color: "#ec4899",
+      font_family: "system-ui, -apple-system, sans-serif",
+      font_size: 16,
+      hero_title: "Portfolio Kreatif",
+      hero_subtitle: "Transformasi Ide Menjadi Karya Digital",
+      about_title: "Tentang Kami",
+      about_text: "Kami adalah tim profesional yang berdedikasi untuk menciptakan pengalaman digital yang luar biasa. Dengan passion dan keahlian, kami menghadirkan solusi kreatif untuk setiap proyek.",
+      portfolio_title: "Karya Kami",
+      project_1_title: "Desain Mobile App",
+      project_2_title: "Website E-Commerce",
+      project_3_title: "Branding Identity",
+      contact_title: "Mari Berkolaborasi",
+      contact_button: "Hubungi Kami"
+    };
+
+    async function onConfigChange(config) {
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      // Apply colors
+      const heroSection = document.querySelector('.hero-gradient');
+      heroSection.style.background = `linear-gradient(120deg, ${backgroundColor} 0%, ${secondaryActionColor} 30%, ${primaryActionColor} 100%)`;
+
+      document.querySelectorAll('section.bg-white').forEach(section => {
+        section.style.backgroundColor = surfaceColor;
+      });
+
+      const titles = document.querySelectorAll('h1, h2, h3');
+      titles.forEach(title => {
+        if (!title.classList.contains('text-white')) {
+          title.style.color = textColor;
+        }
+      });
+
+      const contactButton = document.getElementById('contact-button');
+      contactButton.style.background = `linear-gradient(to right, ${primaryActionColor}, ${secondaryActionColor})`;
+
+      // Apply fonts
+      const baseFontStack = 'system-ui, -apple-system, sans-serif';
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+
+      // Apply font sizes
+      document.getElementById('hero-title').style.fontSize = `${fontSize * 3.125}px`;
+      document.getElementById('hero-subtitle').style.fontSize = `${fontSize * 1.5}px`;
+      document.getElementById('about-title').style.fontSize = `${fontSize * 2.5}px`;
+      document.getElementById('about-text').style.fontSize = `${fontSize * 1.25}px`;
+      document.getElementById('portfolio-title').style.fontSize = `${fontSize * 2.5}px`;
+      document.getElementById('contact-title').style.fontSize = `${fontSize * 2.5}px`;
+      document.getElementById('contact-button').style.fontSize = `${fontSize * 1.125}px`;
+      
+      document.querySelectorAll('.project-overlay h3').forEach(title => {
+        title.style.fontSize = `${fontSize * 1.5}px`;
+      });
+
+      // Update text content
+      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('portfolio-title').textContent = config.portfolio_title || defaultConfig.portfolio_title;
+      document.getElementById('project-1-title').textContent = config.project_1_title || defaultConfig.project_1_title;
+      document.getElementById('project-2-title').textContent = config.project_2_title || defaultConfig.project_2_title;
+      document.getElementById('project-3-title').textContent = config.project_3_title || defaultConfig.project_3_title;
+      document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+      document.getElementById('contact-button').textContent = config.contact_button || defaultConfig.contact_button;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["about_title", config.about_title || defaultConfig.about_title],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["portfolio_title", config.portfolio_title || defaultConfig.portfolio_title],
+        ["project_1_title", config.project_1_title || defaultConfig.project_1_title],
+        ["project_2_title", config.project_2_title || defaultConfig.project_2_title],
+        ["project_3_title", config.project_3_title || defaultConfig.project_3_title],
+        ["contact_title", config.contact_title || defaultConfig.contact_title],
+        ["contact_button", config.contact_button || defaultConfig.contact_button]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Contact button functionality
+    document.getElementById('contact-button').addEventListener('click', function() {
+      const messageEl = document.getElementById('contact-message');
+      messageEl.textContent = '✅ Terima kasih! Kami akan segera menghubungi Anda.';
+      messageEl.style.opacity = '1';
+      
+      setTimeout(() => {
+        messageEl.style.opacity = '0';
+      }, 3000);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a790a0fa55741d7',t:'MTc2NDY1OTc5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
